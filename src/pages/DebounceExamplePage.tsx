@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Text from "~/components/Text";
+import TextInput from "~/components/TextInput";
+import Title from "~/components/Title";
 import { useDebounce } from "~/hooks/useDebounce";
 
 const DebounceExamplePage = () => {
@@ -9,22 +12,16 @@ const DebounceExamplePage = () => {
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.currentTarget.value);
-    console.log("normal", text);
-  };
-
-  const onDebounce = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setText(event.currentTarget.value);
-    console.log("debounce", debouncedText);
   };
 
   return (
-    <div>
-      <h1>Debounce Example</h1>
+    <div className="flex flex-col gap-1">
+      <Title>Debounce Example</Title>
+      <TextInput type="text" onChange={onChange} />
       <p>Normal</p>
-      <input className="border" type="text" onChange={onChange} />
-      <br />
+      <Text>{text}</Text>
       <p>Debounce</p>
-      <input className="border" type="text" onChange={onDebounce} />
+      <Text>{debouncedText}</Text>
     </div>
   );
 };
