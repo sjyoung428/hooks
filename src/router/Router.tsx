@@ -13,19 +13,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePage />,
+        element: <HomePage.lazy />,
       },
       {
         path: "/debounce",
-        element: <DebounceExamplePage />,
+        element: <DebounceExamplePage.lazy />,
       },
       {
         path: "/throttle",
-        element: <ThrottleExamplePage />,
+        element: <ThrottleExamplePage.lazy />,
       },
       {
         path: "/observer",
-        element: <ObserverExamplePage />,
+        element: <ObserverExamplePage.lazy />,
       },
     ],
     errorElement: <NotFoundPage />,

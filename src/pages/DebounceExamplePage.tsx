@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 import Text from "~/components/Text";
 import TextInput from "~/components/TextInput";
 import Title from "~/components/Title";
@@ -27,3 +27,5 @@ const DebounceExamplePage = () => {
 };
 
 export default DebounceExamplePage;
+
+DebounceExamplePage.lazy = lazy(() => import("./DebounceExamplePage"));

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, lazy } from "react";
 import Title from "~/components/Title";
 import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 
@@ -41,3 +41,5 @@ const ObserverExamplePage = () => {
 };
 
 export default ObserverExamplePage;
+
+ObserverExamplePage.lazy = lazy(() => import("./ObserverExamplePage"));
