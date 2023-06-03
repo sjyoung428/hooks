@@ -7,7 +7,7 @@ const Header = () => {
         <Navigation to="/" name="Home" />
         <Navigation to="/debounce" name="Debounce" />
         <Navigation to="/throttle" name="Throttle" />
-        <Navigation to="observer" name="Observer" />
+        <Navigation to="/observer" name="Observer" />
       </ul>
     </nav>
   );

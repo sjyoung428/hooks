@@ -11,6 +11,7 @@ const ObserverExamplePage = () => {
 
   const { observe, unobserve, disconnect } = useIntersectionObserver({
     callback,
+    threshold: 0.5,
   });
 
   useEffect(() => {

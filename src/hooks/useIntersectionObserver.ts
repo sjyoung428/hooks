@@ -2,10 +2,12 @@ import { useRef } from "react";
 
 interface useIntersectionObserverProps {
   callback: () => void;
+  threshold?: number;
 }
 
 export const useIntersectionObserver = ({
   callback,
+  threshold = 1,
 }: useIntersectionObserverProps) => {
   const observer = useRef(
     new IntersectionObserver(
@@ -16,7 +18,7 @@ export const useIntersectionObserver = ({
           }
         });
       },
-      { threshold: 1 }
+      { threshold }
     )
   );
 
