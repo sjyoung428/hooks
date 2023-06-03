@@ -3,6 +3,7 @@ import App from "~/App";
 import DebounceExamplePage from "~/pages/DebounceExamplePage";
 import HomePage from "~/pages/HomePage";
 import NotFoundPage from "~/pages/NotFoundPage";
+import ThrottleExamplePage from "~/pages/ThrottleExamplePage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/debounce",
         element: <DebounceExamplePage />,
+      },
+      {
+        path: "/throttle",
+        element: <ThrottleExamplePage />,
       },
     ],
     errorElement: <NotFoundPage />,

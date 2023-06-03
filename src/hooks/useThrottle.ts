@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 interface useThrottleProps<T> {
   value: T;
-  delay: number;
+  delay?: number;
 }
 
-export const useTrottle = <T>({ value, delay = 500 }: useThrottleProps<T>) => {
+export const useThrottle = <T>({ value, delay = 500 }: useThrottleProps<T>) => {
   const [throttleValue, setTrottleValue] = useState<T>(value);
   const throttling = useRef(false);
 
