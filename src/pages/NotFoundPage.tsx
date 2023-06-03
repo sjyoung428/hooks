@@ -1,5 +1,7 @@
+import Text from "~/components/Text";
+
 const NotFoundPage = () => {
-  return <div>Not Found</div>;
+  return <Text>Not Found</Text>;
 };
 
 export default NotFoundPage;
