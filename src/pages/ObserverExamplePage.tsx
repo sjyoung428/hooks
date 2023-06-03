@@ -31,8 +31,8 @@ const ObserverExamplePage = () => {
   return (
     <div>
       <Title>아래로 스크롤</Title>
-      <div style={{ height: "100vh" }}></div>
-      <div ref={targetRef} style={{ height: "50px", background: "red" }}>
+      <div className="h-[100vh]"></div>
+      <div ref={targetRef} className="h-[50px] bg-red-500">
         Target Element
       </div>
     </div>
