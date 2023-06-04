@@ -10,3 +10,7 @@ export const ObserverExamplePage = lazy(
 export const ThrottleExamplePage = lazy(
   () => import("~/pages/ThrottleExamplePage")
 );
+
+export const OutsideClickExamplePage = lazy(
+  () => import("~/pages/OutsideClickExamplePage")
+);

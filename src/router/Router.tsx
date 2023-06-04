@@ -24,6 +24,10 @@ const router = createBrowserRouter([
         path: "observer",
         element: <lazy.ObserverExamplePage />,
       },
+      {
+        path: "out-side-click",
+        element: <lazy.OutsideClickExamplePage />,
+      },
     ],
     errorElement: <NotFoundPage />,
   },

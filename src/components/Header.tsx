@@ -8,6 +8,7 @@ const Header = () => {
         <Navigation to="/debounce" name="Debounce" />
         <Navigation to="/throttle" name="Throttle" />
         <Navigation to="/observer" name="Observer" />
+        <Navigation to="/out-side-click" name="OutSideClick" />
       </ul>
     </nav>
   );
