@@ -8,6 +8,9 @@ const OutsideClickExamplePage = () => {
   useOutsideClickEffect([ref1, ref2], () => {
     console.log("Outside Click");
   });
+  // useOutsideClickEffect(ref1, () => {
+  //   console.log("Outside Click 1");
+  // });
 
   return (
     <div className="flex flex-col gap-1">

@@ -20,6 +20,13 @@ export const useOutsideClickEffect = (
         if (isOutsideClick) {
           callback(event);
         }
+        return;
+      }
+      if (
+        isNotNil(container.current) &&
+        !container.current.contains(event.target as Node)
+      ) {
+        callback(event);
       }
     };
     document.addEventListener("mousedown", handleDocumentClick);
