@@ -8,7 +8,6 @@ interface NavigationProps {
 
 const Navigation = ({ to, name }: NavigationProps) => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <>
@@ -17,7 +16,7 @@ const Navigation = ({ to, name }: NavigationProps) => {
           name.toLocaleLowerCase() === pathname.substring(1) ||
             (name === "Home" && pathname === "/")
             ? "underline underline-offset-4 decoration-amber-800"
-            : "no-underline"
+            : "underline decoration-transparent transition-colors hover:underline underline-offset-4 hover:decoration-amber-800 "
         )}
       >
         <Link to={to}>{name}</Link>
