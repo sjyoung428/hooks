@@ -1,10 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "~/App";
-import ObserverExamplePage from "~/pages/ObserverExamplePage";
-import DebounceExamplePage from "~/pages/DebounceExamplePage";
-import HomePage from "~/pages/HomePage";
 import NotFoundPage from "~/pages/NotFoundPage";
-import ThrottleExamplePage from "~/pages/ThrottleExamplePage";
+import * as lazy from "~/router/lazy";
 
 const router = createBrowserRouter([
   {
@@ -12,20 +9,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "",
-        element: <HomePage.lazy />,
+        index: true,
+        element: <lazy.HomePage />,
       },
       {
-        path: "/debounce",
-        element: <DebounceExamplePage.lazy />,
+        path: "debounce",
+        element: <lazy.DebounceExamplePage />,
       },
       {
-        path: "/throttle",
-        element: <ThrottleExamplePage.lazy />,
+        path: "throttle",
+        element: <lazy.ThrottleExamplePage />,
       },
       {
-        path: "/observer",
-        element: <ObserverExamplePage.lazy />,
+        path: "observer",
+        element: <lazy.ObserverExamplePage />,
       },
     ],
     errorElement: <NotFoundPage />,

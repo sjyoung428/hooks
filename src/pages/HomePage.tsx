@@ -1,4 +1,3 @@
-import { lazy } from "react";
 import Title from "~/components/Title";
 
 const HomePage = () => {
@@ -6,5 +5,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-HomePage.lazy = lazy(() => import("./HomePage"));

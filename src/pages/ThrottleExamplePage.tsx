@@ -1,4 +1,4 @@
-import { lazy, useState } from "react";
+import { useState } from "react";
 import Text from "~/components/Text";
 import TextInput from "~/components/TextInput";
 import Title from "~/components/Title";
@@ -28,5 +28,3 @@ const ThrottleExamplePage = () => {
 };
 
 export default ThrottleExamplePage;
-
-ThrottleExamplePage.lazy = lazy(() => import("./ThrottleExamplePage"));
