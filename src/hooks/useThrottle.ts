@@ -6,20 +6,20 @@ interface useThrottleProps<T> {
 }
 
 export const useThrottle = <T>({ value, delay = 500 }: useThrottleProps<T>) => {
-  const [throttleValue, setTrottleValue] = useState<T>(value);
-  const throttling = useRef(false);
+  const [throttleValue, setThrottleValue] = useState<T>(value);
+  const lastRun = useRef(Date.now());
 
   useEffect(() => {
-    if (throttling.current === false) {
-      setTrottleValue(value);
-      throttling.current = true;
-    }
-
-    setTimeout(() => {
-      if (throttling?.current) {
-        throttling.current = false;
+    const handler = setTimeout(() => {
+      if (Date.now() - lastRun.current >= delay) {
+        setThrottleValue(value);
+        lastRun.current = Date.now();
       }
-    }, delay);
+    }, delay - (Date.now() - lastRun.current));
+
+    return () => {
+      clearTimeout(handler);
+    };
   }, [value, delay]);
 
   return throttleValue;
