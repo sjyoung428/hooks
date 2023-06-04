@@ -2,10 +2,10 @@ import type { RefObject } from "react";
 import { useEffect } from "react";
 import { isNotNil } from "~/utils/isNotNil";
 
-type OnOrMore<T> = T | T[];
+type OneOrMore<T> = T | T[];
 
 export const useOutsideClickEffect = (
-  container: OnOrMore<RefObject<HTMLElement>>,
+  container: OneOrMore<RefObject<HTMLElement>>,
   callback: (event: MouseEvent | TouchEvent) => void
 ) => {
   useEffect(() => {
