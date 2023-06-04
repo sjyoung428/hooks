@@ -7,13 +7,12 @@ interface NavigationProps {
 
 const Navigation = ({ to, name }: NavigationProps) => {
   const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <>
-      {pathname !== to && (
-        <li>
-          <Link to={to}>{name}</Link>
-        </li>
-      )}
+      <li className="">
+        <Link to={to}>{name}</Link>
+      </li>
     </>
   );
 };
