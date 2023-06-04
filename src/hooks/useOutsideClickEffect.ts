@@ -1,55 +1,33 @@
-import { useCallback, useEffect, useRef } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 import { isNotNil } from "~/utils/isNotNil";
 
 type OnOrMore<T> = T | T[];
 
-interface useOutsideClickEffectProps {
-  container: OnOrMore<HTMLElement | null>;
-  callback: () => void;
-}
-
-export const useOutsideClickEffect = ({
-  container,
-  callback,
-}: useOutsideClickEffectProps) => {
-  const containers = useRef<HTMLElement[]>([]);
-
+export const useOutsideClickEffect = (
+  container: OnOrMore<RefObject<HTMLElement>>,
+  callback: (event: MouseEvent | TouchEvent) => void
+) => {
   useEffect(() => {
-    containers.current = (
-      Array.isArray(container) ? container : [container]
-    ).filter(isNotNil);
-  }, [container]);
+    const handleDocumentClick = (event: MouseEvent | TouchEvent) => {
+      if (Array.isArray(container)) {
+        const isOutsideClick = container.every((ref) => {
+          return isNotNil(ref.current)
+            ? !ref.current.contains(event.target as Node)
+            : true;
+        });
 
-  const handleDocumentClick = useCallback(
-    ({ target }: MouseEvent | TouchEvent) => {
-      if (target === null) {
-        return;
+        if (isOutsideClick) {
+          callback(event);
+        }
       }
-
-      if (containers.current.length === 0) {
-        return;
-      }
-
-      if (
-        containers.current.some((container) =>
-          container.contains(target as Node)
-        )
-      ) {
-        return;
-      }
-
-      callback();
-    },
-    [callback]
-  );
-
-  useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
+    };
+    document.addEventListener("mousedown", handleDocumentClick);
     document.addEventListener("touchstart", handleDocumentClick);
 
     return () => {
-      document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("mousedown", handleDocumentClick);
       document.removeEventListener("touchstart", handleDocumentClick);
     };
-  });
+  }, [container, callback]);
 };

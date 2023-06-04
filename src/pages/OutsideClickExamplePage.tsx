@@ -5,11 +5,8 @@ import { useOutsideClickEffect } from "~/hooks/useOutsideClickEffect";
 const OutsideClickExamplePage = () => {
   const ref1 = useRef<HTMLDivElement>(null);
   const ref2 = useRef<HTMLDivElement>(null);
-  useOutsideClickEffect({
-    container: [ref1.current, ref2.current],
-    callback: () => {
-      alert("Clicked outside");
-    },
+  useOutsideClickEffect([ref1, ref2], () => {
+    console.log("Outside Click");
   });
 
   return (
