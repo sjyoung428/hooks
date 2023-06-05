@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         path: "out-side-click",
         element: <lazy.OutsideClickExamplePage />,
       },
+      {
+        path: "network",
+        element: <lazy.NetworkExamplePage />,
+      },
     ],
     errorElement: <NotFoundPage />,
   },

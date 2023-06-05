@@ -14,3 +14,7 @@ export const ThrottleExamplePage = lazy(
 export const OutsideClickExamplePage = lazy(
   () => import("~/pages/OutsideClickExamplePage")
 );
+
+export const NetworkExamplePage = lazy(
+  () => import("~/pages/NetworkExamplePage")
+);

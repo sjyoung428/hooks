@@ -9,6 +9,7 @@ const Header = () => {
         <Navigation to="/throttle" name="Throttle" />
         <Navigation to="/observer" name="Observer" />
         <Navigation to="/out-side-click" name="OutSideClick" />
+        <Navigation to="/network" name="Network" />
       </ul>
     </nav>
   );

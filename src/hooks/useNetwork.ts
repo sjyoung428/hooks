@@ -1,4 +1,4 @@
-import { isServer } from "../utils/isServer";
+import { useCallback, useEffect } from "react";
 
 type UseNetworkCallback = () => void;
 type UseNetworkOptions = {
@@ -7,27 +7,25 @@ type UseNetworkOptions = {
 };
 
 export const useNetwork = ({ onOnline, onOffline }: UseNetworkOptions = {}) => {
-  if (isServer()) {
-    return;
-  }
-
-  const handleOnline = () => {
+  const handleOnline = useCallback(() => {
     if (onOnline) {
       onOnline();
     }
-  };
+  }, [onOnline]);
 
-  const handleOffline = () => {
+  const handleOffline = useCallback(() => {
     if (onOffline) {
       onOffline();
     }
-  };
+  }, [onOffline]);
 
-  window.addEventListener("online", handleOnline);
-  window.addEventListener("offline", handleOffline);
+  useEffect(() => {
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
-  return () => {
-    window.removeEventListener("online", handleOnline);
-    window.removeEventListener("offline", handleOffline);
-  };
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, [handleOffline, handleOnline]);
 };
