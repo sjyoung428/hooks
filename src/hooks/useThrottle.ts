@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-interface useThrottleProps<T> {
+interface UseThrottleProps<T> {
   value: T;
   delay?: number;
 }
 
-export const useThrottle = <T>({ value, delay = 500 }: useThrottleProps<T>) => {
+export const useThrottle = <T>({ value, delay = 500 }: UseThrottleProps<T>) => {
   const [throttleValue, setThrottleValue] = useState<T>(value);
   const lastRun = useRef(Date.now());
 
