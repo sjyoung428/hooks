@@ -1,19 +1,25 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-type UseNetworkCallback = () => void;
+type UseNetworkCallback = () => void | Promise<void>;
 type UseNetworkOptions = {
   onOnline?: UseNetworkCallback;
   onOffline?: UseNetworkCallback;
 };
 
 export const useNetwork = ({ onOnline, onOffline }: UseNetworkOptions = {}) => {
+  const [isOnline, setIsOnline] = useState(
+    typeof navigator !== "undefined" ? navigator.onLine : true
+  );
+
   const handleOnline = useCallback(() => {
+    setIsOnline(true);
     if (onOnline) {
       onOnline();
     }
   }, [onOnline]);
 
   const handleOffline = useCallback(() => {
+    setIsOnline(false);
     if (onOffline) {
       onOffline();
     }
@@ -28,4 +34,5 @@ export const useNetwork = ({ onOnline, onOffline }: UseNetworkOptions = {}) => {
       window.removeEventListener("offline", handleOffline);
     };
   }, [handleOffline, handleOnline]);
+  return isOnline;
 };

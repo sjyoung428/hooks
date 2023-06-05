@@ -6,14 +6,12 @@ import { useNetwork } from "~/hooks/useNetwork";
 const NetworkExamplePage = () => {
   const [text, setText] = useState("");
 
-  useNetwork({
+  const isOnline = useNetwork({
     onOnline: () => {
       setText("Online");
-      console.log("Online");
     },
     onOffline: () => {
       setText("Offline");
-      console.log("Offline");
     },
   });
 
@@ -21,6 +19,7 @@ const NetworkExamplePage = () => {
     <div className="flex flex-col gap-1">
       <Title>Network Example</Title>
       <Text>{text}</Text>
+      <Text>{isOnline ? "Online" : "Offline"}</Text>
     </div>
   );
 };
